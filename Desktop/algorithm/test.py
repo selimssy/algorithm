@@ -281,9 +281,36 @@ print(s2.find(str1.replace("?",""))) #2
 # x.index(i.replace("?","")) == i.count("?") or x.index(i.replace("?","")) == 0
 
 
+list1 = [1,2,3,4,5]
+print(list1[(5+1)%2])
+
+
+
+
+list1 = [10,20,30,40,50]
+print(max(list1[0:3]))  # 30
+print(sorted(list1[0:3], reverse=True)[3-1]) 
+
+
+nums1 = [1,2,3,4,5]
+nums2 = [10,20,30,40,50]
+plus = list(map(lambda x,y: x+y, nums1, nums2))
+print(plus) # [11, 22, 33, 44, 55]
+if plus == [11, 22, 33, 44, 55]:
+    print("일치") # 일치
+
+print("".join(["SOO","OXX","OOO"]).count("X"))  #2 
+
 
 # for i in range(9,-1,-1) :   이게뭐지
 
 
 
+# 알아둬야 할 True, False 연산법
+print(not 3 <= 5 <= 6)  
 
+
+
+
+# any() 함수는 인자로 받은 iterable 객체(리스트, 튜플, 집합 등) 중에서 하나라도 True인 값이 있으면 True를 반환하고, 
+# 모두 False인 경우에만 False를 반환
