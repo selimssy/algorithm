@@ -180,3 +180,110 @@ s.find("k", -1)
 str4 = "hello"
 r_str = str4[::-1]
 print(r_str)
+
+
+
+# 딕셔너리에서 key만 추출
+d1 = {"0":2, "1":1, "2":1, "3":1} 
+print(d1.keys())  # dict_keys(['0', '1', '2', '3']) 
+# 얘를 set() 함수를 써서 두 딕셔너리에서 공통으로 존재하는 key값 구하는 등으로 응용 가능
+
+
+
+
+# 문자열에서 해당 문자가(여기선 숫자)가 몇 번씩 있는지 + 문자열에서 각각의 문자열을 for로 접근
+string = "12234"
+dict = {int(char): string.count(char) for char in string}
+print(dict)
+string2 = "가가가나다라"
+print(string2.count("가"))
+print([char for char in string])
+
+
+
+
+
+# join함수  -- 기본 문법:  구분자.join(문자열 or 리스트 or 튜플 등)   
+join_list = ['안', '녕', '하', '세', '요']
+print("".join(join_list)) # 안녕하세요
+print("_".join(join_list)) # 안_녕_하_세_요
+
+
+
+
+# 0이 5번인 리스트 생성법
+# 1. for 사용
+list1 = [0 for _ in range(5)]
+#2. ★★★리스트 덧셈 사용★★★ --------이걸 주로 써야
+list2 = [0] * 5
+print(list1) #[0, 0, 0, 0, 0]
+print(list2) #[0, 0, 0, 0, 0]
+print(list1 + list2) # [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+common_num = [0]
+print(common_num + [1]*2)
+
+
+
+
+
+# 문자열 각각의 문자를 리스트로 생성하는 간단한 방법
+s = "5525"
+print(list(s))
+
+
+
+
+ 
+# 특정 원소가 리스트에 몇 개 있는지 출력
+list1 = [10,20,20,30,30,30,40,40,40,40,50,50,50,50,50]
+print(list1.count(30)) #3
+print(list1.count(50)) #5
+
+
+
+
+# 문자열 리스트에서 부분적으로 포함되는 요소 추출
+list2 = ['hello', 'helloJenny', 'hi']
+new = [str for str in list2 if 'hello' in str]
+print(new)
+
+
+
+# 리스트 컴프리헨션에서 lambda 사용하는 예제
+squares = [(lambda x: x**2)(x) for x in range(10) if x%2 == 0]
+print(squares)  # [0, 4, 16, 36, 64]
+
+
+
+original_list = ['apple', 'banana', 'cherry']
+reversed_list = list(map(lambda x: ''.join(reversed(x)), original_list))
+print(reversed_list)  # ['elppa', 'ananab', 'yrrehc']
+
+
+str = "abcabcabc"
+print(list(reversed(str)))
+
+
+
+
+
+# 
+str1 = "?????ABC"
+s1 = "ABCqq"
+s2 = "qqABC"
+print(str1.count("?"))  # 5
+print(str1.index("ABC")) # 5
+
+print(s1.find(str1.replace("?",""))) #0
+print(s2.find(str1.replace("?",""))) #2
+
+# x.index(i.replace("?","")) == i.count("?") or x.index(i.replace("?","")) == 0
+
+
+
+# for i in range(9,-1,-1) :   이게뭐지
+
+
+
+
