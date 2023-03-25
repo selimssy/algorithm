@@ -302,8 +302,6 @@ if plus == [11, 22, 33, 44, 55]:
 print("".join(["SOO","OXX","OOO"]).count("X"))  #2 
 
 
-# for i in range(9,-1,-1) :   이게뭐지
-
 
 
 # 알아둬야 할 True, False 연산법
@@ -314,3 +312,189 @@ print(not 3 <= 5 <= 6)
 
 # any() 함수는 인자로 받은 iterable 객체(리스트, 튜플, 집합 등) 중에서 하나라도 True인 값이 있으면 True를 반환하고, 
 # 모두 False인 경우에만 False를 반환
+
+
+
+## n의 약수 갯수 구하는 방법 2가지 중에서
+
+# 1.리스트 컴프리헨션 이용하고 len으로 갯수 구하는거랑
+list1 = [i for i in range(1,17) if 16 % i == 0]
+print(len(list1))
+
+# 2. 변수 사용하는 것 중에서 이게 더 효율적
+def divisors(n):
+    cnt = 0
+    for i in range(1, n+1):
+        if n % i == 0:
+            cnt += 1
+    return cnt
+
+
+# 그리고 제곱근까지만 for 돌리는 이게 더 효율적
+import math
+def count_divisors(n):
+    count = 0
+    for i in range(1, int(math.sqrt(n))+1):
+        if n % i == 0:
+            count += 2
+            if i == n // i:
+                count -= 1
+    return count
+
+
+
+# 바꾸려는 문자 없어도 에러 안뜬다!
+print("abc".replace("d", ""))
+
+
+
+# 
+str = "a5"
+print(str[0].isdigit()) #False
+print(str[1].isdigit()) #True
+
+
+
+
+## 다음은 파이썬 리스트 컴프리헨션과 lambda 함수를 사용하여 ['abc', 'ab', 'efg']의 원소 길이가
+#  짝수이면 원소의 첫 번째 글자를, 홀수이면 두 번째 글자를 추출하여 리스트로 반환하는 예제 
+words = ['abc', 'ab', 'efg']
+result = [(lambda x: x[0] if len(x)%2 == 0 else x[1])(word) for word in words]
+print(result) #['b', 'a', 'f']
+
+
+
+
+# 딕셔너리 in으로 있는지 확인하기
+index = {'TR':0, 'FC':0, 'MJ':0, 'NA':0}
+print('TR' in index)  # True
+
+
+
+# 딕셔너리 key, value 사용한 딕셔너리 컴프리헨션
+fruits = {'car': 1, 'bus': 2, 'train': 3, 'subway': 4}
+items = [(key, value) for key, value in fruits.items()]
+values = list(fruits.values())
+keys = list(fruits.keys())
+print(items)  # [('car', 1), ('bus', 2), ('train', 3), ('subway', 4)]
+print(values) # [1, 2, 3, 4]
+print(keys) # ['car', 'bus', 'train', 'subway']
+
+
+
+
+
+# replace 횟수 제한하려면 3번째 인자로 횟수 쓰면 된다!!
+
+
+
+
+
+# 파이썬 숫자로 이루어진 리스트 [1,2,3,4,5]를 문자열 "12345"로 만드는법(join함수 쓰는게 for문 써서 += 작업하는 것보다 빠르다!!★)
+'''
+numbers = [1, 2, 3, 4, 5]
+numbers_str = ''.join(map(str, numbers))
+print(numbers_str)  # "12345"
+'''
+
+
+
+## 날짜 관련 함수
+from datetime import datetime
+
+def date(date):
+    return datetime.strptime(date, '%Y.%m.%d')
+
+print(date("2021.05.02")) #2021-05-02 00:00:00
+
+
+# "2021.05.02" 에 해당하는 날짜에 n개월 더하는 방법
+date_string = "2021.05.02"
+date = datetime.strptime(date_string, "%Y.%m.%d")
+n = 6
+new_date = date.replace(month=date.month + n)
+
+print(new_date.strftime("%Y.%m.%d"))
+
+# "2021.05.02" 에 해당하는 날짜에 n일 빼는 방법
+import datetime
+date_str = "2021.05.02"
+date_obj = datetime.datetime.strptime(date_str, "%Y.%m.%d")
+
+new_date_obj = date_obj - datetime.timedelta(days=1)
+
+# strftime :d atetime 객체를 지정된 형식의 문자열로 변환하는 메서드
+new_date_str = new_date_obj.strftime("%Y.%m.%d")
+print(new_date_str) # 2021.04.25
+
+
+
+
+
+terms = ["A 6", "B 12", "C 3"]
+each_term = {term[0]:int(term[2:]) for term in terms}
+print(each_term)
+
+
+
+
+
+from datetime import datetime, timedelta
+
+input_date = datetime.strptime('2022-05-19', '%Y-%m-%d')
+
+new_month = input_date.month + 11
+new_year = input_date.year
+
+if new_month > 12:
+    new_month -= 12
+    new_year += 1
+
+output_date = input_date.replace(year=new_year, month=new_month)
+
+print(output_date.strftime('%Y-%m-%d'))
+
+
+
+
+
+
+
+string = "3 - 4 = -3"
+expression = string.split('=')[0].strip()
+value = string.split('=')[1].strip()
+
+quiz = ["19 - 6 = 13", "5 + 66 = 71", "5 - 15 = 63", "3 - 1 = 2"]
+print(["O" if eval(str.split('=')[0].strip()) == int(str.split('=')[1].strip()) else "X" for str in quiz])
+
+list1 = []
+list2 = [1]
+if list1:
+    print("111")
+if list2:
+    print("222")    # 얘만 출력(비어있지 않을 때만 출력)
+
+
+print(sorted([10, 30, 80, 20, 50, 70, 40, 40, 90]))
+
+
+
+
+beads = [10, 30, 80, 20, 50, 70, 40, 40, 90]
+beads.sort()  # 구슬 무게를 기준으로 정렬
+bins = []  # 주머니 리스트
+for b in beads:
+    # 현재 주머니가 존재하고, 주머니의 무게와 구슬의 무게를 더한 값이 100 이하일 때
+    if bins and (sum(bins[-1]) + b) <= 100:
+        # 현재 주머니에 구슬 추가
+        bins[-1].append(b)
+    else:
+        # 새로운 주머니 생성하여 구슬 추가
+        bins.append([b])
+print(len(bins))  # 필요한 주머니 개수 출력
+
+
+
+
+
+# for i in range(9,-1,-1) :   이게뭐지
