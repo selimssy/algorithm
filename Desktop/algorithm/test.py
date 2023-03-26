@@ -468,7 +468,7 @@ quiz = ["19 - 6 = 13", "5 + 66 = 71", "5 - 15 = 63", "3 - 1 = 2"]
 print(["O" if eval(str.split('=')[0].strip()) == int(str.split('=')[1].strip()) else "X" for str in quiz])
 
 list1 = []
-list2 = [1]
+list2 = [1,2,3,4]
 if list1:
     print("111")
 if list2:
@@ -476,7 +476,7 @@ if list2:
 
 
 print(sorted([10, 30, 80, 20, 50, 70, 40, 40, 90]))
-
+print(sum(list2))
 
 
 
